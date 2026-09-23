@@ -1,0 +1,12 @@
+/* Only the currently visible native YouTube captions are interactive. */
+#movie_player [data-subtitleclick-caption] {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  border-radius: 5px;
+}
+#movie_player [data-subtitleclick-caption]:hover,
+#movie_player [data-subtitleclick-caption]:focus-visible {
+  outline: 2px solid rgba(136, 230, 198, .8) !important;
+  outline-offset: 4px;
+}

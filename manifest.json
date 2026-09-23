@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "SubtitleClick",
+  "version": "0.2.0",
+  "description": "Traduza legendas do YouTube para português com tradução local, contexto recente e repetição do áudio.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "SubtitleClick",
+    "default_popup": "src/popup/popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["https://www.youtube.com/*"],
+    "run_at": "document_idle",
+    "js": [
+      "src/storage/settings.js",
+      "src/translation/chrome-translator-provider.js",
+      "src/translation/translation-service.js",
+      "src/content/subtitle-detector.js",
+      "src/content/caption-context.js",
+      "src/content/video-controller.js",
+      "src/content/subtitle-ui.js",
+      "src/content/content.js"
+    ],
+    "css": ["src/content/content.css"]
+  }],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"
+  }
+}

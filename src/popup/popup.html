@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SubtitleClick</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header><span class="mark" aria-hidden="true">S<span>↗</span></span><div><h1>SubtitleClick</h1><p>Aprenda sem sair do vídeo.</p></div></header>
+  <main>
+    <div class="languages"><span id="source-code">EN</span><span aria-hidden="true">→</span><span>PT</span><small>Tradução local</small></div>
+    <label class="setting"><span>Idioma da legenda</span><select id="sourceLanguage" disabled aria-label="Idioma da legenda"></select></label>
+    <label class="setting"><span>Ativar no YouTube</span><input id="enabled" type="checkbox" disabled></label>
+    <label class="setting"><span>Pausar ao clicar<small>Ao fechar, o vídeo continua.</small></span><input id="pauseOnClick" type="checkbox" disabled></label>
+    <label class="setting"><span>Incluir contexto anterior<small>Ajuda com frases cortadas.</small></span><input id="includeContext" type="checkbox" disabled></label>
+    <label class="setting"><span>Voltar ao fechar<small>Se a extensão pausou o vídeo.</small></span><select id="rewindSeconds" disabled aria-label="Voltar ao fechar"><option value="0">Não voltar</option><option value="3">3 segundos</option><option value="5">5 segundos</option><option value="8">8 segundos</option></select></label>
+    <p class="instructions">Selecione <strong>o mesmo idioma</strong> aqui e nas legendas do YouTube. Clique na frase para traduzir.</p>
+    <p id="status" role="status">Verificando tradução local…</p>
+    <p id="save-status" role="status"></p>
+  </main>
+  <footer>Sem conta. Sem histórico salvo. Sem rastreamento.</footer>
+  <script src="../storage/settings.js"></script>
+  <script src="../translation/chrome-translator-provider.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

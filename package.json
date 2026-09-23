@@ -1,0 +1,16 @@
+{
+  "name": "subtitleclick",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Local subtitle translation, recent context and audio replay for YouTube",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/unit/*.test.cjs",
+    "test:browser": "node scripts/browser-tests.cjs",
+    "test:native": "node scripts/native-smoke.cjs",
+    "check": "node scripts/check.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
