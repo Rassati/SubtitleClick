@@ -2,7 +2,7 @@
   'use strict';
   const ns = globalThis.SubtitleClick ??= {};
   const languages = Object.freeze({
-    en: 'Inglês', ja: 'Japonês', ru: 'Russo', de: 'Alemão', es: 'Espanhol', fr: 'Francês',
+    en: 'Inglês', pt: 'Português', ja: 'Japonês', ru: 'Russo', de: 'Alemão', es: 'Espanhol', fr: 'Francês',
     it: 'Italiano', ko: 'Coreano', zh: 'Chinês simplificado', 'zh-Hant': 'Chinês tradicional',
     ar: 'Árabe', bg: 'Búlgaro', bn: 'Bengali', cs: 'Tcheco', da: 'Dinamarquês', el: 'Grego',
     fi: 'Finlandês', he: 'Hebraico', hi: 'Hindi', hr: 'Croata', hu: 'Húngaro', id: 'Indonésio',
@@ -11,9 +11,9 @@
     th: 'Tailandês', tr: 'Turco', uk: 'Ucraniano', vi: 'Vietnamita'
   });
   const defaults = Object.freeze({ enabled: true, pauseOnClick: true, sourceLanguage: 'en',
-    includeContext: true, rewindSeconds: 0 });
+    includeContext: true, rewindSeconds: 0, originalFirst: true, targetLanguage: 'pt' });
   function valid(key, value) {
-    if (key === 'sourceLanguage') return typeof value === 'string' && Object.hasOwn(languages, value);
+    if (key === 'sourceLanguage' || key === 'targetLanguage') return typeof value === 'string' && Object.hasOwn(languages, value);
     if (key === 'rewindSeconds') return [0, 3, 5, 8].includes(value);
     return Object.hasOwn(defaults, key) && typeof value === 'boolean';
   }

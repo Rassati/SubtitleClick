@@ -35,7 +35,8 @@
       } else this.entries.push({ text, start: time, seen: time });
       this.entries = this.entries.slice(-30);
     }
-    get(text, time) {
+    get(text, time) { return this.snapshot(text, time).text; }
+    snapshot(text, time) {
       this.observe(text, time);
       let result = text;
       let next = this.entries.at(-1);
@@ -49,7 +50,7 @@
         result = combined;
         next = previous;
       }
-      return normalize(result) === normalize(text) ? text : result;
+      return { text: normalize(result) === normalize(text) ? text : result, start: next?.start ?? time };
     }
   }
   Object.assign(ns, { CaptionContext, mergeCaptions });

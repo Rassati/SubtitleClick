@@ -1,9 +1,11 @@
 {
   "manifest_version": 3,
   "name": "SubtitleClick",
-  "version": "0.2.0",
-  "description": "Traduza legendas do YouTube para português com tradução local, contexto recente e repetição do áudio.",
-  "permissions": ["storage"],
+  "version": "0.5.0",
+  "description": "Estude legendas do YouTube: palavras clicáveis, tradução local, dicionário e cartões de frases com referências aos vídeos.",
+  "permissions": ["storage", "declarativeNetRequestWithHostAccess"],
+  "host_permissions": ["https://www.youtube-nocookie.com/*"],
+  "background": { "service_worker": "src/background.js" },
   "action": {
     "default_title": "SubtitleClick",
     "default_popup": "src/popup/popup.html"
@@ -12,18 +14,27 @@
     "matches": ["https://www.youtube.com/*"],
     "run_at": "document_idle",
     "js": [
+      "src/build.js",
       "src/storage/settings.js",
+      "src/storage/vocabulary-client.js",
       "src/translation/chrome-translator-provider.js",
       "src/translation/translation-service.js",
       "src/content/subtitle-detector.js",
       "src/content/caption-context.js",
+      "src/content/caption-timing.js",
       "src/content/video-controller.js",
+      "src/content/word-tools.js",
+      "src/content/word-panel.js",
       "src/content/subtitle-ui.js",
       "src/content/content.js"
     ],
     "css": ["src/content/content.css"]
+  }, {
+    "matches": ["https://www.youtube.com/*"],
+    "run_at": "document_start",
+    "js": ["src/content/keyboard-guard.js"]
   }],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'self'; frame-src https://www.youtube-nocookie.com"
   }
 }

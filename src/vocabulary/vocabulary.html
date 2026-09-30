@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meu dicionário · SubtitleClick</title>
+  <link rel="stylesheet" href="vocabulary.css">
+</head>
+<body>
+  <header><div><p class="eyebrow">SUBTITLECLICK</p><h1>Meu dicionário</h1><p>Palavras que você encontrou. Frases que dão sentido a elas.</p></div>
+    <div class="backup"><button id="export" disabled>Exportar backup</button><button id="import">Importar backup</button><input id="file" type="file" accept=".json,application/json" hidden></div>
+  </header>
+  <main>
+    <div class="collection-tabs"><a href="vocabulary.html" aria-current="page">Palavras</a><a href="sentences.html">Frases e cartões</a></div>
+    <div class="toolbar"><label for="search">Buscar no dicionário</label><input id="search" type="search" placeholder="Palavra, significado ou anotação…" autocomplete="off"><span id="count"></span></div>
+    <p id="status" role="status" aria-live="polite">Carregando suas palavras…</p>
+    <div class="layout"><nav aria-label="Palavras salvas"><div id="list"></div><button id="more" hidden>Mostrar mais</button></nav>
+      <section id="detail" aria-label="Detalhes da palavra"><div class="empty"><span aria-hidden="true">Aa</span><h2>Seu vocabulário começa no vídeo.</h2><p>Clique na legenda e depois diretamente numa palavra do cartão. Você também pode usar <strong>Alt + clique</strong>. Salve os significados que quiser lembrar.</p></div></section>
+    </div>
+  </main>
+  <footer>Salvo apenas neste perfil do Chrome. Exporte um backup antes de remover a extensão ou trocar de computador.<br>Bases: FreeDict (GPL-2.0+) e WikDict/Wiktionary (CC BY-SA 3.0). <a href="../../THIRD_PARTY_NOTICES.md" target="_blank">Créditos e licenças</a></footer>
+  <script src="../build.js"></script><script src="../storage/vocabulary-client.js"></script>
+  <script src="vocabulary.js"></script>
+</body>
+</html>

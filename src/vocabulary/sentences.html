@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Frases e cartões · SubtitleClick</title><link rel="stylesheet" href="vocabulary.css"></head>
+<body>
+  <header><div><p class="eyebrow">SUBTITLECLICK</p><h1>Frases e cartões</h1><p>Relembre a frase. Revele o sentido. Volte ao vídeo.</p></div><a href="vocabulary.html">Backup e dicionário ↗</a></header>
+  <main>
+    <div class="collection-tabs"><a href="vocabulary.html">Palavras</a><a href="sentences.html" aria-current="page">Frases e cartões</a></div>
+    <div class="toolbar"><label for="search">Buscar frases</label><input id="search" type="search" placeholder="Frase, tradução ou anotação…"><span id="count"></span></div>
+    <div class="review-toolbar"><select id="language" aria-label="Filtrar idiomas"><option value="">Todos os idiomas</option></select><button id="study" disabled>Estudar frases</button></div>
+    <p id="status" role="status" aria-live="polite">Carregando suas frases…</p>
+    <div class="layout" id="collection"><nav aria-label="Frases salvas"><div id="list"></div><button id="more" hidden>Mostrar mais</button></nav><section id="detail" aria-label="Detalhes da frase"><div class="empty"><span aria-hidden="true">“ ”</span><h2>Guarde uma frase que faça sentido para você.</h2><p>No vídeo, clique em <strong>Salvar frase</strong>. A tradução é salva junto. Ouça o trecho e revele o verso quando quiser.</p></div></section></div>
+    <section id="review" hidden aria-label="Estudo de frases"></section>
+  </main>
+  <footer>Cartões locais, sem conta. Você escolhe quando revelar a tradução. Os backups do dicionário também incluem suas frases.</footer>
+  <script src="../build.js"></script><script src="../storage/vocabulary-client.js"></script>
+  <script src="../translation/chrome-translator-provider.js"></script><script src="../translation/translation-service.js"></script>
+  <script src="clip-player.js"></script><script src="sentences.js"></script>
+</body>
+</html>

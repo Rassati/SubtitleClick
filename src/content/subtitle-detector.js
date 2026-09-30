@@ -70,7 +70,7 @@
         element.setAttribute('data-subtitleclick-caption', '');
         element.setAttribute('role', 'button');
         element.setAttribute('tabindex', '0');
-        element.setAttribute('title', 'Traduzir para português · SubtitleClick');
+        element.setAttribute('title', 'Clique: abrir legenda · Alt + clique: consultar palavra · SubtitleClick');
         element.setAttribute('aria-label', 'Traduzir legenda para português');
       }
       const changed = next.text !== this.current.text;

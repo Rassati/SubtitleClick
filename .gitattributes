@@ -1,0 +1,4 @@
+# Preserve the exact public dictionary source bytes for reproducible checksums.
+vendor/freedict/eng-por.tei -text
+data/eng-por.json -text
+data/wikdict-en-pt.json -text

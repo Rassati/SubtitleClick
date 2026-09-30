@@ -1,22 +1,37 @@
 (() => {
   'use strict';
   const { Settings, ChromeTranslatorProvider } = globalThis.SubtitleClick;
+  const storageStatus = document.querySelector('#storage-status');
+  const reload = document.querySelector('#reload-extension');
+  reload.addEventListener('click', () => chrome.runtime.reload());
+  void (async () => {
+    try {
+      const health = await SubtitleClick.VocabularyClient.request('health');
+      storageStatus.textContent = `Versão ${health.version} · armazenamento pronto.`;
+    } catch (error) {
+      storageStatus.textContent = error.message;
+      reload.hidden = false;
+    }
+  })();
   const status = document.querySelector('#status');
   const saveStatus = document.querySelector('#save-status');
   const source = document.querySelector('#sourceLanguage');
+  const target = document.querySelector('#targetLanguage');
   for (const [code, label] of Object.entries(Settings.languages)) {
     const option = document.createElement('option');
     option.value = code;
     option.textContent = label;
     source.append(option);
+    target.append(option.cloneNode(true));
   }
   const provider = new ChromeTranslatorProvider();
   let revision = 0;
-  async function check(language) {
+  async function check(language, targetLanguage) {
     const id = ++revision;
     document.querySelector('#source-code').textContent = language.toUpperCase();
+    document.querySelector('#target-code').textContent = targetLanguage.toUpperCase();
     status.textContent = 'Verificando tradução local…';
-    const state = await provider.availability(language, 'pt');
+    const state = await provider.availability(language, targetLanguage);
     if (id !== revision) return;
     const messages = {
       available: 'Modelo local disponível para este idioma.',
@@ -42,7 +57,7 @@
           await Settings.set(key, value);
           settings[key] = value;
           saveStatus.textContent = '';
-          if (key === 'sourceLanguage') void check(value);
+          if (key === 'sourceLanguage' || key === 'targetLanguage') void check(settings.sourceLanguage, settings.targetLanguage);
         } catch {
           if (checkbox) input.checked = settings[key];
           else input.value = String(settings[key]);
@@ -50,6 +65,6 @@
         } finally { inputs.forEach(input => { input.disabled = false; }); }
       });
     }
-    void check(settings.sourceLanguage);
+    void check(settings.sourceLanguage, settings.targetLanguage);
   }).catch(() => { saveStatus.textContent = 'Não foi possível carregar as preferências. Reabra a extensão.'; });
 })();
